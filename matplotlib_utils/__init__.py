@@ -11,7 +11,8 @@ def remove_overhanging_labels(ax,fig,axis='y'):
         pos=label.get_position()
         xmin,xmax=ax.get_xlim()
         ymin,ymax=ax.get_ylim()
-        if pos[0]<xmin or pos[0]>xmax or pos[1]<ymin or pos[1]>ymax:
+        if axis=='x' and (pos[0]<xmin or pos[0]>xmax) or \
+           axis=='y' and (pos[1]<ymin or pos[1]>ymax):
             continue
         bbox=label.get_window_extent()
         bbox=fig.transFigure.inverted().transform(bbox)
