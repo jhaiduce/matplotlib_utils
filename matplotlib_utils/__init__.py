@@ -40,4 +40,7 @@ def add_subplot_labels(ax_list,labelpos=(0.95,0.95),subplot_labels=None,**kwargs
         text=ax.text(labelpos[0],labelpos[1],subplot_labels[i],transform=ax.transAxes,**kwargs)
         label_artists.append(text)
 
+        # Invisible point to prevent legend being drawn on top of label when using loc='best'
+        ax.plot(labelpos[0],labelpos[1],linestyle='',transform=ax.transAxes)
+
     return label_artists
